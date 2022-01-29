@@ -15,7 +15,7 @@ export const ToDoListHeader = ({ addFunc }) => {
   return (
     <div>
       <input onChange={(e) => inputChange(e.target.value)} />
-      <button onClick={() => addFunc("inputValue")}>ADD</button>
+      <button onClick={() => addFunc(inputValue)}>ADD</button>
     </div>
   );
 };
