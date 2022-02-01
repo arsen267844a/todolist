@@ -12,10 +12,19 @@ export const ToDoListHeader = ({ addFunc }) => {
     setState((prevState) => ({ ...prevState, inputValue: value }));
   };
 
+  const func2 = () => {
+    addFunc(inputValue);
+    setState((prevState) => ({ ...prevState, inputValue: "" }));
+  };
+
   return (
     <div>
-      <input onChange={(e) => inputChange(e.target.value)} />
-      <button onClick={() => addFunc(inputValue)}>ADD</button>
+      <input
+        value={inputValue}
+        onChange={(e) => inputChange(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && func2()}
+      />
+      <button onClick={func2}>ADD</button>
     </div>
   );
 };

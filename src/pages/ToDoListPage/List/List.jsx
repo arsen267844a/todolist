@@ -1,7 +1,7 @@
 import React from "react";
 import { Styled } from "./List.styled";
 
-export const List = ({ list }) => {
+export const List = ({ list, del, edit }) => {
   return (
     <Styled.Root>
       {list.map((item, index) => (
@@ -9,8 +9,8 @@ export const List = ({ list }) => {
           <input type={"checkbox"} />
           <p>{item}</p>
           <Styled.EditDel>
-            <span>edit</span>
-            <span>del</span>
+            <span onClick={() => edit(item)}>edit</span>
+            <span onClick={() => del(index)}>del</span>
           </Styled.EditDel>
         </Styled.Item>
       ))}

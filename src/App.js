@@ -1,22 +1,17 @@
-import { HomePage } from "./pages/HomePage";
-import { ToDoListPage } from "./pages/ToDoListPage";
 import { Route } from "react-router-dom";
 import { routes } from "./routes";
 
 export const App = () => {
   return (
     <div>
-      {routes.map((route, index) => (
+      {routes.map((item, index) => (
         <Route
           key={index}
-          path={route.path}
-          exact={route.exact}
-          children={<route.page />}
+          path={item.path}
+          exact={item.exact}
+          children={<item.page />}
         />
       ))}
-
-      {/*<HomePage/>*/}
-      <ToDoListPage />
     </div>
   );
 };

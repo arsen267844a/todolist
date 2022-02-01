@@ -1,10 +1,16 @@
-import { HomePage } from '../pages/HomePage'
+import { HomePage } from "../pages/HomePage";
+import { ToDoListPage } from "../pages/ToDoListPage";
+import { ToDoListHeader } from "../pages/ToDoListPage/ToDoListHeader";
 
 export const routes = [
-	{
-		path: "/",
-		exact: true,
-		page: () => <HomePage />,
-	},
-	
+  {
+    path: "/",
+    exact: true,
+    page: () => <HomePage />,
+  },
+  {
+    path: "/todolist",
+    exact: true,
+    page: () => <ToDoListPage />,
+  },
 ];
