@@ -1,9 +1,7 @@
-import React from "react";
-
-export const ModalHeader = ({ modalTitle, modalCloseFunc }) => {
+export const ModalHeader = ({ modalCloseFunc, children }) => {
   return (
     <div>
-      <span>To {modalTitle}</span>
+      <span>To {children}</span>
       <button onClick={() => modalCloseFunc("close")}>close</button>
     </div>
   );

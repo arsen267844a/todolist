@@ -1,9 +1,7 @@
-import React from "react";
-
-export const ModalFooter = ({ leftButtonText, modalCloseFunc }) => {
+export const ModalFooter = ({ modalCloseFunc, children }) => {
   return (
     <div>
-      <button>{leftButtonText}</button>
+      <button>{children}</button>
       <button onClick={() => modalCloseFunc("close")}>close</button>
     </div>
   );

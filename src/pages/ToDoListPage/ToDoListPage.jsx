@@ -6,11 +6,13 @@ import { ToDoModal } from "../../components/ToDOModal";
 const initialState = {
   list: [],
   isOpen: false,
+  isEdit: false,
+  isDel: false,
 };
 
 export const ToDoListPage = () => {
   const [state, setState] = useState(initialState);
-  const { list, isOpen } = state;
+  const { list, isOpen, isEdit, isDel } = state;
 
   const addFunc = (value) => {
     const listClone = JSON.parse(JSON.stringify(list));
@@ -26,21 +28,32 @@ export const ToDoListPage = () => {
     }
   };
 
-  const del = (value) => {
-    handleModal("open");
-
-    /*const listClone = JSON.parse(JSON.stringify(list));
+  const del = () => {
+    const listClone = JSON.parse(JSON.stringify(list));
     listClone.splice(value, 1);
-    setState((prevState) => ({ ...prevState, list: listClone }));*/
+    setState((prevState) => ({ ...prevState, list: listClone }));
   };
 
-  const edit = (value) => {};
+  const openDelModal = (value) => {
+    setState((prevState) => ({ ...prevState, isDel: true, isEdit: false }));
+    handleModal("open");
+  };
+
+  const openEditModal = (value) => {
+    setState((prevState) => ({ ...prevState, isDel: false, isEdit: true }));
+    handleModal("open");
+  };
 
   return (
     <div style={{ width: "600px" }}>
-      <ToDoModal isOpen={isOpen} handleModal={handleModal} />
+      <ToDoModal
+        isOpen={isOpen}
+        handleModal={handleModal}
+        isEdit={isEdit}
+        isDel={isDel}
+      />
       <ToDoListHeader addFunc={addFunc} />
-      <List list={list} del={del} edit={edit} />
+      <List list={list} del={openDelModal} edit={edit} />
     </div>
   );
 };
