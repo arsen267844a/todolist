@@ -28,11 +28,11 @@ export const ToDoListPage = () => {
     }
   };
 
-  const del = () => {
+  /*  const del = () => {
     const listClone = JSON.parse(JSON.stringify(list));
     listClone.splice(value, 1);
     setState((prevState) => ({ ...prevState, list: listClone }));
-  };
+  };*/
 
   const openDelModal = (value) => {
     setState((prevState) => ({ ...prevState, isDel: true, isEdit: false }));
@@ -53,7 +53,7 @@ export const ToDoListPage = () => {
         isDel={isDel}
       />
       <ToDoListHeader addFunc={addFunc} />
-      <List list={list} del={openDelModal} edit={edit} />
+      <List list={list} del={openDelModal} />
     </div>
   );
 };
