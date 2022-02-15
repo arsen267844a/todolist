@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeInputValue,
+  add,
+} from "../../../../store/actions/toDoListActions";
 
-const initialState = {
-  inputValue: "",
-};
-
-export const ToDoListHeader = ({ addFunc }) => {
-  const [state, setState] = useState(initialState);
+export const ToDoListHeader = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
   const { inputValue } = state;
 
   const inputChange = (value) => {
-    setState((prevState) => ({ ...prevState, inputValue: value }));
+    dispatch(changeInputValue(value));
   };
-
-  const func2 = () => {
-    addFunc(inputValue);
-    setState((prevState) => ({ ...prevState, inputValue: "" }));
+  const addFunc = () => {
+    dispatch(add());
   };
 
   return (
@@ -22,9 +21,9 @@ export const ToDoListHeader = ({ addFunc }) => {
       <input
         value={inputValue}
         onChange={(e) => inputChange(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && func2()}
+        onKeyDown={(e) => e.key === "Enter" && addFunc()}
       />
-      <button onClick={func2}>ADD</button>
+      <button onClick={addFunc}>ADD</button>
     </div>
   );
 };

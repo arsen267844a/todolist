@@ -1,8 +1,11 @@
 import Modal from "react-modal";
 import { ModalHeader } from "./components/ModalHeader";
 import { ModalFooter } from "./components/ModalFooter";
+import { useSelector } from "react-redux";
 
 export const ToDoModal = ({ isOpen, handleModal, isDel, isEdit }) => {
+  const state = useSelector((state) => state);
+  const { isOpenModal } = state;
   const customStyles = {
     content: {
       top: "50%",
@@ -15,7 +18,7 @@ export const ToDoModal = ({ isOpen, handleModal, isDel, isEdit }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} style={customStyles}>
+    <Modal isOpen={isOpenModal} style={customStyles}>
       <ModalHeader modalCloseFunc={handleModal}>
         {isDel ? "do you want to delete" : null}
         {isEdit ? "Edit" : null}

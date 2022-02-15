@@ -1,16 +1,12 @@
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { changeName } from "../store/actions";
 
 export const HomePage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { name } = useSelector((state) => state);
 
-  const func = (value) => {
-    // history.push(value);
-    dispatch(changeName);
-  };
+  const func = (value) => {};
 
   return (
     <div>

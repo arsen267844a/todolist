@@ -14,12 +14,6 @@ export const ToDoListPage = () => {
   const [state, setState] = useState(initialState);
   const { list, isOpen, isEdit, isDel } = state;
 
-  const addFunc = (value) => {
-    const listClone = JSON.parse(JSON.stringify(list));
-    listClone.push(value);
-    setState((prevState) => ({ ...prevState, list: listClone }));
-  };
-
   const handleModal = (value) => {
     if (value === "open") {
       setState((prevState) => ({ ...prevState, isOpen: true }));
@@ -52,7 +46,7 @@ export const ToDoListPage = () => {
         isEdit={isEdit}
         isDel={isDel}
       />
-      <ToDoListHeader addFunc={addFunc} />
+      <ToDoListHeader />
       <List list={list} del={openDelModal} />
     </div>
   );
